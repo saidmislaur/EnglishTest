@@ -9,8 +9,6 @@ window.onload = function() {
         firstName: '',
         lastName: '',
         classNumber: 2,
-        parentName: '',
-        phone: '',
       },
       step: 0,
       substep: 0,
@@ -53,14 +51,10 @@ window.onload = function() {
     var firtnameInput = view.querySelector('#child-firstname');
     var lastnameInput = view.querySelector('#child-lastname');
     var classInput = view.querySelector('#child-class');
-    var parentInput = view.querySelector('#child-fio-parent');
-    var phoneInput = view.querySelector('#child-phone');
     var values = {
       firstName: firtnameInput.value,
       lastName: lastnameInput.value,
       classNumber: parseInt(classInput.value),
-      parentName: parentInput.value,
-      phone: phoneInput.value,
     };
     if (Object.values(values).some(value => !value)) {
       return false;
@@ -131,31 +125,47 @@ window.onload = function() {
       .toArray()
       .map(function(el, index) {
         if (el.textContent === corrects[index]) {
-          increment('rating' + 1);
+          increment('rating');
         }
       });
     increment('step');
   }
 
   view.on('click', '#next-btn', function() {
-    switch (store.data.step) {
-      case 0:
-        submitForm();
-        break;
-      case 1:
-        checkInputs();
-        var el = document.getElementById('draggable-answers');
-        var sortable = Sortable.create(el);
-        break;
-      case 2:
-        checkWords();
-        break;
-      case 3:
-        checkFinds();
-        break;
-      case 4:
-        checkFinds();
-        break;
+    if (store.data.form.classNumber < 5) {
+      switch (store.data.step) {
+        case 0:
+          submitForm();
+          break;
+        case 1:
+          checkInputs();
+          var el = document.getElementById('draggable-answers');
+          var sortable = Sortable.create(el);
+          break;
+        case 2:
+          checkWords();
+          break;
+        case 3:
+          checkFinds();
+          break;
+        case 4:
+          checkFinds();
+          break;
+      }
+    } else {
+      switch (store.data.step) {
+        case 0:
+            submitForm();
+          break;
+        case 1:
+            checkInputs();
+            var el = document.getElementById('draggable-answers');
+            var sortable = Sortable.create(el);
+          break;
+        case 2:
+            checkFinds();
+          break;
+      }
     }
   });
 
@@ -189,7 +199,7 @@ window.onload = function() {
   });
 
   view.on('click', '#prev-btn', function() {
-    view.update({ step: --state.step });
+    increment('step', -1);
   });
 };
 
