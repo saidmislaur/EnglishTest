@@ -131,6 +131,8 @@ window.onload = function() {
     increment('step');
   }
 
+
+
   view.on('click', '#next-btn', function() {
     if (store.data.form.classNumber < 5) {
       switch (store.data.step) {
@@ -139,17 +141,16 @@ window.onload = function() {
           break;
         case 1:
           checkInputs();
-          var el = document.getElementById('draggable-answers');
-          var sortable = Sortable.create(el);
           break;
         case 2:
-          checkWords();
+          checkInputs();
           break;
         case 3:
-          checkFinds();
+          checkWords();
           break;
         case 4:
           checkFinds();
+          setResultName();
           break;
       }
     } else {
@@ -165,9 +166,51 @@ window.onload = function() {
         case 2:
             checkFinds();
           break;
+        case 3:
+            checkInputs();
+          break;
+        case 4:
+            checkInputs();
+            setResultName();
+          break;   
       }
     }
   });
+
+  function setResultName() {
+    if(store.data.rating <= 5  && store.data.form.classNumber == 1 ) {
+      store.update({
+        resultName: 'E10',
+      });
+    }
+    if(store.data.rating >= 6 && store.data.form.classNumber == 1) {
+      store.update({
+        resultName: 'E11',
+      })
+    }
+    if(store.data.rating >= 15 && store.data.form.classNumber == 1) {
+      store.update({
+        resultName: 'E12',
+      })
+    }
+    if(store.data.rating >= 33 && store.data.form.classNumber == 1) {
+      store.update({
+        resultName: 'E13',
+      })
+    }
+    if(store.data.rating >= 58 && store.data.form.classNumber == 1) {
+      store.update({
+        resultName: 'E14',
+      })
+    }
+    if(store.data.rating <= 9 && store.data.form.classNumber == 5){
+      store.update({
+        resultName: 'E21',
+      })
+    }
+  }
+
+
 
   view.on('click', '.task1-btn', function(e) {
     var value = e.target.textContent;
