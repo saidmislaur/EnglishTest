@@ -203,11 +203,72 @@ window.onload = function() {
         resultName: 'E14',
       })
     }
-    if(store.data.rating <= 9 && store.data.form.classNumber == 5){
+    if(store.data.rating <= 5  && store.data.form.classNumber == 1 ) {
       store.update({
-        resultName: 'E21',
+        resultName: 'E10',
+      });
+    }
+    if(store.data.rating >= 6 && store.data.form.classNumber == 2) {
+      store.update({
+        resultName: 'E11',
       })
     }
+    if(store.data.rating >= 15 && store.data.form.classNumber == 2) {
+      store.update({
+        resultName: 'E12',
+      })
+    }
+    if(store.data.rating >= 33 && store.data.form.classNumber == 2) {
+      store.update({
+        resultName: 'E13',
+      })
+    }
+    if(store.data.rating >= 58 && store.data.form.classNumber == 2) {
+      store.update({
+        resultName: 'E14',
+      })
+    }
+    if(store.data.rating <= 14 && store.data.form.classNumber == 3) {
+      store.update({
+        resultName: 'E11',
+      })
+    }
+    if(store.data.rating >= 33 && store.data.form.classNumber == 3) {
+      store.update({
+        resultName: 'E12',
+      })
+    }
+    if(store.data.rating >= 57 && store.data.form.classNumber == 3) {
+      store.update({
+        resultName: 'E13',
+      })
+    }
+    if(store.data.rating >= 66 && store.data.form.classNumber == 3) {
+      store.update({
+        resultName: 'E23',
+      })
+    }
+    if(store.data.rating <= 10 && store.data.form.classNumber == 4) {
+      store.update({
+        resultName: 'E11',
+      })
+    }
+    if(store.data.rating >= 30 && store.data.form.classNumber == 4) {
+      store.update({
+        resultName: 'E12',
+      })
+    }
+    if(store.data.rating >= 57 && store.data.form.classNumber == 4) {
+      store.update({
+        resultName: 'E13',
+      })
+    }
+    if(store.data.rating >= 66 && store.data.form.classNumber == 4) {
+      store.update({
+        resultName: 'E23',
+      })
+    }
+
   }
 
 
