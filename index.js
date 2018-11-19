@@ -87,7 +87,7 @@ window.onload = function() {
   function checkInputs() {
     document.querySelectorAll('.form-tester__task-inline-inputs input').forEach(function(el, i) {
       if (el.value.toLowerCase() === el.getAttribute('data-correct')) {
-        store.data.rating += 1;
+        increment('rating');
       }
     });
     store.update(function(data) {
@@ -228,6 +228,8 @@ window.onload = function() {
         resultName: 'E14',
       })
     }
+
+
     if(store.data.rating <= 14 && store.data.form.classNumber == 3) {
       store.update({
         resultName: 'E11',
@@ -248,6 +250,8 @@ window.onload = function() {
         resultName: 'E23',
       })
     }
+
+
     if(store.data.rating <= 10 && store.data.form.classNumber == 4) {
       store.update({
         resultName: 'E11',
@@ -268,6 +272,184 @@ window.onload = function() {
         resultName: 'E23',
       })
     }
+
+    if(store.data.rating <= 9 && store.data.form.classNumber == 5) {
+      store.update({
+        resultName: 'E21',
+      })
+    }
+    if(store.data.rating >= 18 && store.data.form.classNumber == 5) {
+      store.update({
+        resultName: 'E22',
+      })
+    }
+    if(store.data.rating >= 36 && store.data.form.classNumber == 5) {
+      store.update({
+        resultName: 'E23',
+      })
+    }
+    if(store.data.rating >= 55 && store.data.form.classNumber == 5) {
+      store.update({
+        resultName: 'EX23',
+      })
+    }
+    if(store.data.rating >= 84 && store.data.form.classNumber == 5) {
+      store.update({
+        resultName: 'EX25',
+      })
+    }
+
+   if(store.data.rating <= 9 && store.data.form.classNumber == 6) {
+      store.update({
+        resultName: 'E21',
+      })
+    }
+    if(store.data.rating >= 18 && store.data.form.classNumber == 6) {
+      store.update({
+        resultName: 'E22',
+      })
+    }
+    if(store.data.rating >= 36 && store.data.form.classNumber == 6) {
+      store.update({
+        resultName: 'E23',
+      })
+    }
+    if(store.data.rating >= 55 && store.data.form.classNumber == 6) {
+      store.update({
+        resultName: 'EX23',
+      })
+    }
+    if(store.data.rating >= 84 && store.data.form.classNumber == 6) {
+      store.update({
+        resultName: 'EX25',
+      })
+    }
+
+    if(store.data.rating <= 18 && store.data.form.classNumber == 7) {
+      store.update({
+        resultName: 'E31',
+      })
+    }
+    if(store.data.rating >= 37 && store.data.form.classNumber == 7) {
+      store.update({
+        resultName: 'E23',
+      })
+    }
+    if(store.data.rating >= 56 && store.data.form.classNumber == 7) {
+      store.update({
+        resultName: 'EX23',
+      })
+    }
+    if(store.data.rating >= 84 && store.data.form.classNumber == 7) {
+      store.update({
+        resultName: 'EX25',
+      })
+    }
+
+    if(store.data.rating <= 16 && store.data.form.classNumber == 8) {
+      store.update({
+        resultName: 'E31',
+      })
+    }
+    if(store.data.rating >= 29 && store.data.form.classNumber == 8) {
+      store.update({
+        resultName: 'E31',
+      })
+    }
+    if(store.data.rating >= 41 && store.data.form.classNumber == 8) {
+      store.update({
+        resultName: 'E31',
+      })
+    }
+    if(store.data.rating >= 56 && store.data.form.classNumber == 8) {
+      store.update({
+        resultName: 'E31',
+      })
+    }
+    if(store.data.rating >= 84 && store.data.form.classNumber == 8) {
+      store.update({
+        resultName: 'E31',
+      })
+    }
+
+    if(store.data.rating <= 16 && store.data.form.classNumber == 9) {
+      store.update({
+        resultName: 'E31',
+      })
+    }
+    if(store.data.rating >= 29 && store.data.form.classNumber == 9) {
+      store.update({
+        resultName: 'E32',
+      })
+    }
+    if(store.data.rating >= 41 && store.data.form.classNumber == 9) {
+      store.update({
+        resultName: 'E33',
+      })
+    }
+    if(store.data.rating >= 56 && store.data.form.classNumber == 9) {
+      store.update({
+        resultName: 'E34',
+      })
+    }
+    if(store.data.rating >= 84 && store.data.form.classNumber == 9) {
+      store.update({
+        resultName: 'E35',
+      })
+    }
+
+    if(store.data.rating <= 16 && store.data.form.classNumber == 10) {
+      store.update({
+        resultName: 'E31',
+      })
+    }
+    if(store.data.rating >= 29 && store.data.form.classNumber == 10) {
+      store.update({
+        resultName: 'E32',
+      })
+    }
+    if(store.data.rating >= 41 && store.data.form.classNumber == 10) {
+      store.update({
+        resultName: 'E33',
+      })
+    }
+    if(store.data.rating >= 56 && store.data.form.classNumber == 10) {
+      store.update({
+        resultName: 'E34',
+      })
+    }
+    if(store.data.rating >= 84 && store.data.form.classNumber == 10) {
+      store.update({
+        resultName: 'E35',
+      })
+    }
+
+    if(store.data.rating <= 16 && store.data.form.classNumber == 11) {
+      store.update({
+        resultName: 'E31',
+      })
+    }
+    if(store.data.rating >= 29 && store.data.form.classNumber == 11) {
+      store.update({
+        resultName: 'E32',
+      })
+    }
+    if(store.data.rating >= 41 && store.data.form.classNumber == 11) {
+      store.update({
+        resultName: 'E33',
+      })
+    }
+    if(store.data.rating >= 56 && store.data.form.classNumber == 11) {
+      store.update({
+        resultName: 'E34',
+      })
+    }
+    if(store.data.rating >= 84 && store.data.form.classNumber == 11) {
+      store.update({
+        resultName: 'E35',
+      })
+    }
+
 
   }
 
