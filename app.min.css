@@ -126,6 +126,14 @@
     color: white;
 }
 
+#next-btn:focus {
+    border-color: #ea8b1e;
+}
+
+#next-btn:active {
+    background-color: #ea8b1e;
+}
+
 .btn-outline-primary {
     margin: 4px;
 }

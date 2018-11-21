@@ -86,8 +86,10 @@ window.onload = function() {
 
   function checkInputs() {
     document.querySelectorAll('.form-tester__task-inline-inputs input').forEach(function(el, i) {
-      if (el.value.toLowerCase() === el.getAttribute('data-correct')) {
-        increment('rating');
+      if (el.value.toLowerCase() === el.getAttribute('data-correct') && store.data.form.classNumber <= 4) {
+        store.update({
+          rating: store.data.rating + 2,
+        })
       }
     });
     store.update(function(data) {
@@ -106,7 +108,9 @@ window.onload = function() {
         });
       text = text.replace(/\s{2,}/, ' ').trim();
       if (correct === text) {
-        increment('rating');
+        store.update({
+           rating: store.data.rating + 5,
+        })
       }
     });
     increment('step');
@@ -125,7 +129,9 @@ window.onload = function() {
       .toArray()
       .map(function(el, index) {
         if (el.textContent === corrects[index]) {
-          increment('rating');
+          store.update({
+           rating: store.data.rating + 3,
+        })
         }
       });
     increment('step');
