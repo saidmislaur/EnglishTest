@@ -1,310 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css' />
-    <link rel="stylesheet" href="./app.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./app.min.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div id="FormTesterApp" class="form-tester">
-        <script type="text/monkberry" id="Form">
-            <div class="form-tester__wrapper">
-                {% if !step %}
-                <form id="start-form" class="form-tester__form">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Имя ребенка:</label>
-                        <input type="text" class="form-control" id="child-firstname" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Фамилия ребенка:</label>
-                        <input type="text" class="form-control" id="child-lastname" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Класс в школе:</label>
-                        <input type="number" class="form-control" id="child-class" required>
-                    </div>
-                </form>
-                {% endif %}
-                {% if form.classNumber && form.classNumber <= 4 %}
-                <div id="young-test" class="form-tester__form">
+      <script type="text/monkberry" id="Form">
+        <div class="form-tester__wrapper">
+            {% if !step %}
+            <form id="start-form" class="form-tester__form">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Имя ребенка:</label>
+                    <input type="text" class="form-control" id="child-firstname" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Фамилия ребенка:</label>
+                    <input type="text" class="form-control" id="child-lastname" required>
+                </div>
+                <label for="exampleInputEmail1">Класс в школе:</label>
+                <select size="1" id="child-class">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                </select>
+            </form>
+            {% endif %}
+            {% if form.classNumber && form.classNumber <= 4 %}
+            <div id="young-test" class="form-tester__form">
 
-                    <div class="form-tester__task {{ step === 1 ? 'form-tester__task--show' : '' }}">
-                        <h3>№1. Select words from the box under the pictures.</h3>
-                        <div class="form-tester__task-once">
-                            <div class="form-tester__task-once-img"><img class="testimg" src="{{ tasks[1].images[substep] }}" /></div>
-                            <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-light task1-btn" data-index="1">a book</button>
-                                <button type="button" class="btn btn-light task1-btn" data-index="2">a cat</button>
-                                <button type="button" class="btn btn-light task1-btn" data-index="3">a girl</button>
-                                <button type="button" class="btn btn-light task1-btn" data-index="4">the moon</button>
-                                <button type="button" class="btn btn-light task1-btn" data-index="5">a train</button>
-                                <button type="button" class="btn btn-light task1-btn" data-index="6">a parrot</button>
-                            </div>
+                <div id="step-1-junior" class="form-tester__task {{ step === 1 ? 'form-tester__task--show' : '' }}">
+                    <h3>№1. Select words from the box under the pictures.</h3>
+                    <div class="form-tester__task-once">
+                        <div class="form-tester__task-once-img"><img class="testimg" src="{{ tasks[1].images[substep] }}" /></div>
+                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-light task1-btn" data-index="1">a book</button>
+                            <button type="button" class="btn btn-light task1-btn" data-index="2">a cat</button>
+                            <button type="button" class="btn btn-light task1-btn" data-index="3">a girl</button>
+                            <button type="button" class="btn btn-light task1-btn" data-index="4">the moon</button>
+                            <button type="button" class="btn btn-light task1-btn" data-index="5">a train</button>
+                            <button type="button" class="btn btn-light task1-btn" data-index="6">a parrot</button>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-tester__task {{ step === 2 ? 'form-tester__task--show' : '' }}">
-                        <h3>№2. Complete the sentences with one word.</h3>
-                        <div class="form-tester__task-inline-inputs">
-                            <ul class="sentences form-group">
-                                <li>– How <input class="form-control" data-correct="are" type="text">you? – Very well,
-                                    thank you.</li>
-                                <li>–Joy <input class="form-control" data-correct="is" type="text">Sally’s parrot</li>
-                                <li>– What do you have<input class="form-control" data-correct="for" type="text">
-                                    breakfast? – Bread and butter</li>
-                                <li>– How<input class="form-control" data-correct="old" type="text"> are you? – I’m ten</li>
-                                <li>– Can you <input class="form-control" data-correct="ride" type="text">a bike? – No, I
-                                    can’t</li>
-                                <li>– What is your <input class="form-control" data-correct="name" type="text">? – I’m Kate</li>
-                                <li>– How do you <input class="form-control" data-correct="spell" type="text">it? – K-A-T-E</li>
-                                <li>– What is your favourite<input class="form-control" data-correct="food" type="text">? –
-                                    Chicken and chips</li>
-                                <li>I learn English <input class="form-control" data-correct="and" type="text"> Russian.</li>
-                            </ul>
-                        </div>
+                <div id="step-2-junior" class="form-tester__task {{ step === 2 ? 'form-tester__task--show' : '' }}">
+                    <h3>№2. Complete the sentences with one word.</h3>
+                    <div class="form-tester__task-inline-inputs">
+                        <ul class="sentences form-group">
+                            <li>– &nbsp; How <input class="form-control" data-correct="are" type="text">you? &nbsp; – &nbsp; Very well,
+                                thank you.</li>
+                            <li>Joy <input class="form-control" data-correct="is" type="text">Sally’s parrot.</li>
+                            <li>– &nbsp; What do you have<input class="form-control" data-correct="for" type="text">
+                                breakfast? &nbsp;  – &nbsp; Bread and butter.</li>
+                            <li>– &nbsp; How<input class="form-control" data-correct="old" type="text"> are you? &nbsp; – &nbsp; I’m ten.</li>
+                            <li>– &nbsp; Can you <input class="form-control" data-correct="ride" type="text">a bike? &nbsp;  – &nbsp; No, I
+                                can’t.</li>
+                            <li>– &nbsp; What is your <input class="form-control" data-correct="name" type="text">? &nbsp; –  &nbsp; I’m Kate.</li>
+                            <li>– &nbsp; How do you <input class="form-control" data-correct="spell" type="text">it? &nbsp;  – &nbsp; K-A-T-E.</li>
+                            <li>– &nbsp; What is your favourite<input class="form-control" data-correct="food | dish" type="text">? &nbsp; – &nbsp; Chicken and chips.</li>
+                            <li>I learn English <input class="form-control" data-correct="and" type="text"> Russian.</li>
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="form-tester__task {{ step === 3 ? 'form-tester__task--show' : '' }}">
-                        <h3>№3. Put the words in the correct order and write the sentences.</h3>
-                        <div class="form-tester__task-sentences">
-                            <div class="form-tester__task-sentences-words">
-                                <div class="rw">
-                                    <div class="form-tester__task-sentences-field">
-                                        <p data-correct="On Friday he is going to watch a football match" id="words-1"></p>
-                                        <button id="clear-words-1"class="btn btn-outline-danger">X</button>
-                                    </div>
-                                    <div>
-                                        <button data-id="1" class="btn btn-outline-primary">a</button>
-                                        <button data-id="1" class="btn btn-outline-primary">football</button>
-                                        <button data-id="1" class="btn btn-outline-primary">Friday </button>
-                                        <button data-id="1" class="btn btn-outline-primary">going</button>
-                                        <button data-id="1" class="btn btn-outline-primary">he</button>
-                                        <button data-id="1" class="btn btn-outline-primary">is</button>
-                                        <button data-id="1" class="btn btn-outline-primary">match</button>
-                                        <button data-id="1" class="btn btn-outline-primary">On</button>
-                                        <button data-id="1" class="btn btn-outline-primary">to</button>
-                                        <button data-id="1" class="btn btn-outline-primary">watch</button>
-                                    </div>
+                <div id="step-3-junior" class="form-tester__task {{ step === 3 ? 'form-tester__task--show' : '' }}">
+                    <h3>№3. Put the words in the correct order and write the sentences.</h3>
+                    <div class="form-tester__task-sentences">
+                        <div class="form-tester__task-sentences-words">
+                            <div class="rw">
+                                <div class="form-tester__task-sentences-field">
+                                    <p data-correct="On Friday he is going to watch a football match" id="words-1"></p>
+                                    <button id="clear-words-1"class="btn btn-outline-danger">X</button>
                                 </div>
-                                <div class="rw">
-                                    <div class="form-tester__task-sentences-field">
-                                        <p data-correct="Is the girl riding a bike?" id="words-2"></p>
-                                        <button id="clear-words-2"class="btn btn-outline-danger">X</button>
-                                    </div>
-                                    <div>
-                                        <button data-id="2" class="btn btn-outline-primary">a</button>
-                                        <button data-id="2" class="btn btn-outline-primary">bike ?</button>
-                                        <button data-id="2" class="btn btn-outline-primary">girl</button>
-                                        <button data-id="2" class="btn btn-outline-primary">Is</button>
-                                        <button data-id="2" class="btn btn-outline-primary">riding</button>
-                                        <button data-id="2" class="btn btn-outline-primary">the</button>
-                                    </div>
-                                </div>
-                                <div class="rw">
-                                    <div class="form-tester__task-sentences-field">
-                                        <p data-correct="Sandy isn’t very good at science" id="words-3"></p>
-                                        <button id="clear-words-3"class="btn btn-outline-danger">X</button>
-                                    </div>
-                                    <div>
-                                        <button data-id="3" class="btn btn-outline-primary">Sandy</button>
-                                        <button data-id="3" class="btn btn-outline-primary">science</button>
-                                        <button data-id="3" class="btn btn-outline-primary">isn’t</button>
-                                        <button data-id="3" class="btn btn-outline-primary">at</button>
-                                        <button data-id="3" class="btn btn-outline-primary">good</button>
-                                        <button data-id="3" class="btn btn-outline-primary">very</button>
-                                    </div>
-                                </div>
-                                <div class="rw">
-                                    <div class="form-tester__task-sentences-field">
-                                        <p data-correct="I think she will be an artist" id="words-4"></p>
-                                        <button id="clear-words-4"class="btn btn-outline-danger">X</button>
-                                    </div>
-                                    <div>
-                                        <button data-id="4" class="btn btn-outline-primary">she</button>
-                                        <button data-id="4" class="btn btn-outline-primary">will</button>
-                                        <button data-id="4" class="btn btn-outline-primary">artist</button>
-                                        <button data-id="4" class="btn btn-outline-primary">I</button>
-                                        <button data-id="4" class="btn btn-outline-primary">be</button>
-                                        <button data-id="4" class="btn btn-outline-primary">an</button>
-                                        <button data-id="4" class="btn btn-outline-primary">think</button>
-                                    </div>
-                                </div>
-                                <div class="rw">
-                                    <div class="form-tester__task-sentences-field">
-                                        <p data-correct="Craig has never swum in the sea" id="words-5"></p>
-                                        <button id="clear-words-5"class="btn btn-outline-danger">X</button>
-                                    </div>
-                                    <div>
-                                        <button data-id="5" class="btn btn-outline-primary">never</button>
-                                        <button data-id="5" class="btn btn-outline-primary">in</button>
-                                        <button data-id="5" class="btn btn-outline-primary">has</button>
-                                        <button data-id="5" class="btn btn-outline-primary">sea</button>
-                                        <button data-id="5" class="btn btn-outline-primary">swum</button>
-                                        <button data-id="5" class="btn btn-outline-primary">Craig</button>
-                                        <button data-id="5" class="btn btn-outline-primary">the</button>
-                                    </div>
+                                <div>
+                                    <button data-id="1" class="btn btn-outline-primary">a</button>
+                                    <button data-id="1" class="btn btn-outline-primary">football</button>
+                                    <button data-id="1" class="btn btn-outline-primary">Friday </button>
+                                    <button data-id="1" class="btn btn-outline-primary">going</button>
+                                    <button data-id="1" class="btn btn-outline-primary">he</button>
+                                    <button data-id="1" class="btn btn-outline-primary">is</button>
+                                    <button data-id="1" class="btn btn-outline-primary">match</button>
+                                    <button data-id="1" class="btn btn-outline-primary">On</button>
+                                    <button data-id="1" class="btn btn-outline-primary">to</button>
+                                    <button data-id="1" class="btn btn-outline-primary">watch</button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="form-tester__task {{ step === 4 ? 'form-tester__task--show' : '' }}">
-                        <h3>№4. Find the answers to the questions.</h3>
-                        <div class="form-tester__task-find">
-                            <div class="form-tester__task-find-left">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">What did Megan do yesterday?</li>
-                                    <li class="list-group-item">Did Sally Play tennis?</li>
-                                    <li class="list-group-item">Where was it made?</li>
-                                    <li class="list-group-item">Did Ben and Rick play football?</li>
-                                    <li class="list-group-item">Is the man washing his car?</li>
-                                    <li class="list-group-item">How many seats has it got?</li>
-                                </ul>
+                            <div class="rw">
+                                <div class="form-tester__task-sentences-field">
+                                    <p data-correct="Is the girl riding a bike?" id="words-2"></p>
+                                    <button id="clear-words-2"class="btn btn-outline-danger">X</button>
+                                </div>
+                                <div>
+                                    <button data-id="2" class="btn btn-outline-primary">a</button>
+                                    <button data-id="2" class="btn btn-outline-primary">bike?</button>
+                                    <button data-id="2" class="btn btn-outline-primary">girl</button>
+                                    <button data-id="2" class="btn btn-outline-primary">Is</button>
+                                    <button data-id="2" class="btn btn-outline-primary">riding</button>
+                                    <button data-id="2" class="btn btn-outline-primary">the</button>
+                                </div>
                             </div>
-                            <div class="form-tester__task-find-right">
-                                <ul class="list-group list-group-flush" id="draggable-answers">
-                                    <li class="list-group-item">In France.</li>
-                                    <li class="list-group-item">She went swimming.</li>
-                                    <li class="list-group-item">No, he isn’t.</li>
-                                    <li class="list-group-item">Four.</li>
-                                    <li class="list-group-item">No, they didn’t.</li>
-                                    <li class="list-group-item">Yes, she did.</li>
-                                </ul>
+                            <div class="rw">
+                                <div class="form-tester__task-sentences-field">
+                                    <p data-correct="Sandy isn’t very good at science" id="words-3"></p>
+                                    <button id="clear-words-3"class="btn btn-outline-danger">X</button>
+                                </div>
+                                <div>
+                                    <button data-id="3" class="btn btn-outline-primary">Sandy</button>
+                                    <button data-id="3" class="btn btn-outline-primary">science</button>
+                                    <button data-id="3" class="btn btn-outline-primary">isn’t</button>
+                                    <button data-id="3" class="btn btn-outline-primary">at</button>
+                                    <button data-id="3" class="btn btn-outline-primary">good</button>
+                                    <button data-id="3" class="btn btn-outline-primary">very</button>
+                                </div>
+                            </div>
+                            <div class="rw">
+                                <div class="form-tester__task-sentences-field">
+                                    <p data-correct="I think she will be an artist" id="words-4"></p>
+                                    <button id="clear-words-4"class="btn btn-outline-danger">X</button>
+                                </div>
+                                <div>
+                                    <button data-id="4" class="btn btn-outline-primary">she</button>
+                                    <button data-id="4" class="btn btn-outline-primary">will</button>
+                                    <button data-id="4" class="btn btn-outline-primary">artist</button>
+                                    <button data-id="4" class="btn btn-outline-primary">I</button>
+                                    <button data-id="4" class="btn btn-outline-primary">be</button>
+                                    <button data-id="4" class="btn btn-outline-primary">an</button>
+                                    <button data-id="4" class="btn btn-outline-primary">think</button>
+                                </div>
+                            </div>
+                            <div class="rw">
+                                <div class="form-tester__task-sentences-field">
+                                    <p data-correct="Craig has never swum in the sea" id="words-5"></p>
+                                    <button id="clear-words-5"class="btn btn-outline-danger">X</button>
+                                </div>
+                                <div>
+                                    <button data-id="5" class="btn btn-outline-primary">never</button>
+                                    <button data-id="5" class="btn btn-outline-primary">in</button>
+                                    <button data-id="5" class="btn btn-outline-primary">has</button>
+                                    <button data-id="5" class="btn btn-outline-primary">sea</button>
+                                    <button data-id="5" class="btn btn-outline-primary">swum</button>
+                                    <button data-id="5" class="btn btn-outline-primary">Craig</button>
+                                    <button data-id="5" class="btn btn-outline-primary">the</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endif %}
 
-                {% if form.classNumber && form.classNumber >= 5 %}
-                <div id="young-text" class="form-tester__form">
-
-                    <div class="form-tester__task {{ step === 1 ? 'form-tester__task--show' : '' }}">
-                        <h3>№1. Complete the sentences with a suitable word.</h3>
-                        <div class="form-tester__task-inline-inputs">
-                            <ul class="sentences form-group">
-                                <li>– Dr Brown works <input class="form-control" data-correct="on" type="text">Mondays and Thursdays mornings.</li>
-                                <li>–There aren't  <input class="form-control" data-correct="any" type="text">rooms</li>
-                                <li>– I haven’t <input class="form-control" data-correct="got" type="text">
-                                   any brothers or sisters – I’m an only child</li>
-                                <li>–<input class="form-control" data-correct="How" type="text">often do you visit your grandparents</li>
-                                <li>–Do you live  <input class="form-control" data-correct="In" type="text">a village or a city?</li>
-                                <li>–My favourite colours <input class="form-control" data-correct="are" type="text">white and yellow</li>
-                                <li>– How <input class="form-control" data-correct="old" type="text">are you? – I’m twelve</li>
-                                <li>–<input class="form-control" data-correct="do" type="text">? –
-                                    you want to go to the cinema with us?</li>
-                                <li>–She’s at her desk. Go and speak to <input class="form-control" data-correct="her" type="text"></li>
-                                <li>–We went to the cinema two days <input class="form-control" data-correct="ago" type="text"></li>
+                <div id="step-4-junior" class="form-tester__task {{ step === 4 ? 'form-tester__task--show' : '' }}">
+                    <h3>№4. Find the answers to the questions.</h3>
+                    <div class="form-tester__task-find">
+                        <div class="form-tester__task-find-left">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">What did Megan do yesterday?</li>
+                                <li class="list-group-item">Did Sally Play tennis?</li>
+                                <li class="list-group-item">Where was it made?</li>
+                                <li class="list-group-item">Did Ben and Rick play football?</li>
+                                <li class="list-group-item">Is the man washing his car?</li>
+                                <li class="list-group-item">How many seats has it got?</li>
+                            </ul>
+                        </div>
+                        <div class="form-tester__task-find-right">
+                            <ul class="list-group list-group-flush" id="draggable-answers">
+                                <li class="list-group-item">In France.</li>
+                                <li class="list-group-item">She went swimming.</li>
+                                <li class="list-group-item">No, he isn’t.</li>
+                                <li class="list-group-item">Four.</li>
+                                <li class="list-group-item">No, they didn’t.</li>
+                                <li class="list-group-item">Yes, she did.</li>
                             </ul>
                         </div>
                     </div>
-                    
-                    <div class="form-tester__task {{ step === 2 ? 'form-tester__task--show' : '' }}">
-                        <h3>№2. Find the answers to the questions.</h3>
-                        <div class="form-tester__task-find">
-                            <div class="form-tester__task-find-left">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">What did Megan do yesterday?</li>
-                                    <li class="list-group-item">Did Sally Play tennis?</li>
-                                    <li class="list-group-item">Where was it made?</li>
-                                    <li class="list-group-item">Did Ben and Rick play football?</li>
-                                    <li class="list-group-item">Is the man washing his car?</li>
-                                    <li class="list-group-item">How many seats has it got?</li>
-                                </ul>
-                            </div>
-                            <div class="form-tester__task-find-right">
-                                <ul class="list-group list-group-flush" id="draggable-answers">
-                                    <li class="list-group-item">In France.</li>
-                                    <li class="list-group-item">She went swimming.</li>
-                                    <li class="list-group-item">No, he isn’t.</li>
-                                    <li class="list-group-item">Four.</li>
-                                    <li class="list-group-item">No, they didn’t.</li>
-                                    <li class="list-group-item">Yes, she did.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-tester__task {{ step === 3 ? 'form-tester__task--show' : '' }}">
-                        <h3>№3.Write a word from the box in each gap.</h3>
-                        <div class="form-tester__task-words">
-                            <span>casual</span>
-                            <span>good</span>
-                            <span>notice</span>
-                            <span>organize</span>
-                            <span>interests</span>
-                            <span>member</span>
-                            <span>impossible</span>
-                            <span>inform</span>
-                            <span>ingredients</span>
-                            <span>main</span>
-                        </div>
-                        <div class="form-tester__task-inline-inputs">
-                            <ul class="sentences form-group">
-                                <li>–Robert is a <input class="form-control" data-correct="member" type="text">of a tennis club</li>
-                                <li>–It’s <input class="form-control" data-correct="impossible" type="text">to be the best at everything all the time</li>
-                                <li>–Julia wore <input class="form-control" data-correct="casual" type="text">clothes to the party</li>
-                                <li>–Can you help me <input class="form-control" data-correct="organize" type="text">the party?</li> 
-
-                                <li>–She didn’t <input class="form-control" data-correct="notice" type="text">the man standing next to her</li>
-                                <li>–Michael is <input class="form-control" data-correct="good" type="text">at Maths and Science</li>
-                                <li>– Weather programmes <input class="form-control" data-correct="inform" type="text">us about the weather</li>
-                                <li>–This meal is very tasty. What are the <input class="form-control" data-correct="ingredients" type="text">?</li>
-                                <li>–Don’t go through the side doors. Use the <input class="form-control" data-correct="main" type="text">entrance</li>
-                                <li>–Nicole’s <input class="form-control" data-correct="interests" type="text">are reading, cycling and shopping</li>
-                            </ul>
-                        </div>  
-                    </div>
-
-                    <div class="form-tester__task {{ step === 4 ? 'form-tester__task--show' : '' }}">
-                        <div class="form-tester__task-inline-inputs">
-                             <h3>№4.Open the brackets using the appropriate forms.</h3>
-                            <ul class="sentences form-group">
-                                <li>–What <input class="form-control" data-correct="do you do" type="text">(you do)? I am an engineer</li>
-                                <li>–He suggested <input class="form-control" data-correct="going" type="text">(go) to the café</li>
-                                <li>–Her new book <input class="form-control" data-correct="will be published" type="text">(publish) next year</li>
-                                <li>–I’ll phone you as soon as the head teacher <input class="form-control" data-correct="appears" type="text">(appear), but I don’t know when she <input class="form-control" data-correct="will return " type="text">(return)</li> 
-
-                                <li>–I bought a dress at Peter Robinson’s. I wish I <input class="form-control" data-correct="hadn’t wasted" type="text">(not waste) so much money when I got there</li>
-                            </ul>
-                        </div>
-                    </div>    
                 </div>
-                {% endif %}
-
-                {% if step === 5 %}
-                <div class="jumbotron">
-                    <h1 class="display-4">Дорогой(ая), {{ form.firstName + ' ' + form.lastName }}</h1>
-                    <p class="lead">По результатам тестирования группа, подходящая тебе по уровню и возрасту, называется <b><a href="http://stavlider.ru/{{ resultName }}/" target="_blank">{{ resultName }}</a></b>.Рекомендуем записаться на тьюторскую консультацию, где педагог проведет устную часть теста для объективной оценки знаний.</p>
-                    <hr class="my-4">
-                    <p>Получить подробную информацию о расписании и открытых для записи группах можно в одном из наших корпусов или по телефону: 99-18-18</p>
-                    <a class="btn btn-primary btn-lg" href="http://stavlider.ru/pomosh-tjutora/" role="button" target="_blank">Записаться</a>
-                </div>
-                {% endif %}
-
-                {% if step > 0 && step < 5 %}
-                <button id="prev-btn" type="submit" class="btn btn-light">Назад</button>
-                {% endif %}
-
-                {% if step < 5 %}
-                <button id="next-btn" type="submit" class="btn btn-outline-primary">Далее</button>
-                {% endif %}
             </div>
-            </script>
+            {% endif %}
 
+            {% if form.classNumber && form.classNumber >= 5 %}
+            <div id="young-text" class="form-tester__form">
+
+                <div id="step-1-old" class="form-tester__task {{ step === 1 ? 'form-tester__task--show' : '' }}">
+                    <h3>№1. Complete the sentences with a suitable word.</h3>
+                    <div class="form-tester__task-inline-inputs">
+                        <ul class="sentences form-group">
+                            <li>Dr Brown works <input class="form-control" data-correct="on" type="text">Mondays and Thursdays mornings.</li>
+                            <li>There aren't  <input class="form-control" data-correct="any" type="text">rooms.</li>
+                            <li>– &nbsp; I haven’t <input class="form-control" data-correct="got" type="text">
+                               any brothers or sisters &nbsp;  – &nbsp; I’m an only child.</li>
+                            <li><input class="form-control" data-correct="how" type="text">often do you visit your grandparents?</li>
+                            <li>Do you live  <input class="form-control" data-correct="in" type="text">a village or a city?</li>
+                            <li>My favourite colours <input class="form-control" data-correct="are" type="text">white and yellow.</li>
+                            <li>– &nbsp; How <input class="form-control" data-correct="old" type="text">are you? &nbsp; – &nbsp; I’m twelve.</li>
+                            <li><input class="form-control" data-correct="do" type="text">
+                                you want to go to the cinema with us?</li>
+                            <li>She’s at her desk. Go and speak to <input class="form-control" data-correct="her" type="text">.</li>
+                            <li>We went to the cinema two days <input class="form-control" data-correct="ago" type="text">.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="step-2-old" class="form-tester__task {{ step === 2 ? 'form-tester__task--show' : '' }}">
+                    <h3>№2. Find the answers to the questions.</h3>
+                    <div class="form-tester__task-find">
+                        <div class="form-tester__task-find-left">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Would you like a banana?</li>
+                                <li class="list-group-item">Why don’t we make dinner for mum today?</li>
+                                <li class="list-group-item">Where’s the sports stadium?</li>
+                                <li class="list-group-item">Have you ever played basketball?</li>
+                                <li class="list-group-item">How long have you studied English?</li>
+                                <li class="list-group-item">I think this test is easy.</li>
+                            </ul>
+                        </div>
+                        <div class="form-tester__task-find-right">
+                            <ul class="list-group list-group-flush" id="draggable-answers">
+                                <li class="list-group-item">Walk towards the shopping center then turn right.</li>
+                                <li class="list-group-item">I don’t agree.</li>
+                                <li class="list-group-item">For three years.</li>
+                                <li class="list-group-item">Yes, that’s a good idea.</li>
+                                <li class="list-group-item">No, thanks.</li>
+                                <li class="list-group-item">Yes, I have.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="step-3-old" class="form-tester__task {{ step === 3 ? 'form-tester__task--show' : '' }}">
+                    <h3>№3.Write a word from the box in each gap.</h3>
+                    <div class="form-tester__task-words">
+                        <span>casual</span>
+                        <span>good</span>
+                        <span>notice</span>
+                        <span>organize</span>
+                        <span>interests</span>
+                        <span>member</span>
+                        <span>impossible</span>
+                        <span>inform</span>
+                        <span>ingredients</span>
+                        <span>main</span>
+                    </div>
+                    <div class="form-tester__task-inline-inputs">
+                        <ul class="sentences form-group">
+                            <li>1) Robert is a <input class="form-control" data-correct="member" type="text">of a tennis club.</li>
+                            <li>2) It’s <input class="form-control" data-correct="impossible" type="text">to be the best at everything all the time.</li>
+                            <li>3) Julia wore <input class="form-control" data-correct="casual" type="text">clothes to the party.</li>
+                            <li>4) Can you help me <input class="form-control" data-correct="organize" type="text">the party?</li>
+
+                            <li>5) She didn’t <input class="form-control" data-correct="notice" type="text">the man standing next to her.</li>
+                            <li>6) Michael is <input class="form-control" data-correct="good" type="text">at Maths and Science.</li>
+                            <li>7) Weather programmes <input class="form-control" data-correct="inform" type="text">us about the weather.</li>
+                            <li>8) This meal is very tasty. What are the <input class="form-control" data-correct="ingredients" type="text">?</li>
+                            <li>9) Don’t go through the side doors. Use the <input class="form-control" data-correct="main" type="text">entrance.</li>
+                            <li>10) Nicole’s <input class="form-control" data-correct="interests" type="text">are reading, cycling and shopping.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="step-4-old" class="form-tester__task {{ step === 4 ? 'form-tester__task--show' : '' }}">
+                    <div class="form-tester__task-inline-inputs">
+                         <h3>№4.Open the brackets using the appropriate forms.</h3>
+                        <ul class="sentences form-group">
+                            <li>1) What <input class="form-control" data-correct="do you do" type="text">(you do)? I am an engineer.</li>
+                            <li>2) He suggested <input class="form-control" data-correct="going" type="text">(go) to the café.</li>
+                            <li>3) Her new book <input class="form-control" data-correct="will be published" type="text">(publish) next year.</li>
+                            <li>4) I’ll phone you as soon as the head teacher <input class="form-control" data-correct="appears" type="text">(appear), but I don’t know when she <input class="form-control" data-correct="will return " type="text">(return).</li>
+                            <li>5) I bought a dress at Peter Robinson’s. I wish I <input id="form-control" class="form-control"  data-correct="hadn't wasted | had not wasted" type="text">(not waste) so much money when I got there.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="step-5-old" class="form-tester__task {{ step === 5 ? 'form-tester__task--show' : '' }}">
+                    <div class="form-tester__task-inline-inputs">
+                         <h3>№5. Fill in the gaps with words derived from the words in brackets.</h3>
+                        <ul class="sentences form-group">
+                            <li>There are many problems which (1)<input class="form-control" data-correct="threaten" type="text">(threat)  our natural environment. Acid rain, (2)<input class="form-control" data-correct="global" type="text">
+                            (globe) warming and air and water (3) <input class="form-control" data-correct="pollution" type="text">(pollute) are among the most serious ones.  </li>
+
+
+                            <li>There are several ways to help improve the situation. Firstly, we should encourage (4)<input class="form-control" data-correct="recycling" type="text">(recycle) because it is the (5)<input class="form-control" data-correct="production" type="text">
+                                (produce) of new materials which causes the most damage. We must learn to reuse things like plastic bags and glass jars. Secondly, driving an environmentally-friendly car is also  (6)<input class="form-control" data-correct="helpful" type="text">(help). Furthermore, joining an
+                                (7)<input class="form-control" data-correct="organization" type="text">(organize) which plants trees or cleans up beaches would be a (8)<input class="form-control" data-correct="proof" type="text"> (prove) that you are really (9)<input class="form-control" data-correct="concerned" type="text">(concern) about the environment.
+                            </li>
+
+
+                            <li>Lastly, supporting groups such as Greenpeace, which try to prevent many (10)
+                               <input class="form-control" data-correct="environmental" type="text">(environment)
+                               disasters, would help to ensure that our planet will be clean and safe for the future generations.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if step === 5 && form.classNumber < 5 || step === 6 && form.classNumber > 4 %}
+            <div class="jumbotron">
+                <h1 class="display-4">Дорогой(ая), {{ form.firstName + ' ' + form.lastName }}</h1>
+                <p class="lead">По результатам тестирования группа, подходящая тебе по уровню и возрасту, называется <b><a href="http://stavlider.ru/{{ resultName }}/" target="_blank">{{ resultName }}</a></b>.Рекомендуем записаться на тьюторскую консультацию, где педагог проведет устную часть теста для объективной оценки знаний.</p>
+                <hr class="my-4">
+                <p>Получить подробную информацию о расписании и открытых для записи группах можно в одном из наших корпусов или по телефону: 99-18-18</p>
+                <a class="btn btn-primary btn-lg" href="http://stavlider.ru/pomosh-tjutora/" role="button" target="_blank">Записаться</a>
+            </div>
+            {% endif %}
+
+            {% if step > 0 && step < 5 %}
+            <button id="prev-btn" type="submit" class="btn btn-light">Назад</button>
+            {% endif %}
+
+            {% if step < 5 && form.classNumber < 5 || step < 6 && form.classNumber > 4 %}
+            <button id="next-btn" type="submit" class="btn btn-outline-primary">Далее</button>
+            {% endif %}
         </div>
+      </script>
     </div>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.min.js"></script>
     <script src="https://cdn.jsdelivr.net/monkberry-standalone/4.0.2/monkberry.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./index.js"></script>
-</body>
-
+  </body>
 </html>

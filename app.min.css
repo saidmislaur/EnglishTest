@@ -1,3 +1,7 @@
+* {
+    outline-style: none;
+}
+
 .form-tester__wrapper{
     min-width:400px;
     max-width:800px;
@@ -44,7 +48,8 @@
 .form-tester__task-inline-inputs ul{
     padding:0;
     margin:0;
-    list-style:none
+    list-style:none;
+    line-height: 2;
 }
 .form-tester__task-inline-inputs ul li{
     margin-bottom:20px;
@@ -53,7 +58,7 @@
 }
 .form-tester__task-inline-inputs input{
     display:inline-block;
-    width:80px;
+    width:105px;
     margin:0 10px
 }
 .form-tester__task-once{
@@ -114,11 +119,18 @@
     font-size: 20px;
 }
 
+.task-words ul li {
+    
+}
+
+
 #next-btn {
 	color: #ea8b1e;
 	border-color: #ea8b1e;
-	outline: none;
+	outline-style: none;
     margin: 0;
+    box-shadow: none;
+    z-index: 1;
 }
 
 #next-btn:hover {
@@ -127,7 +139,7 @@
 }
 
 #next-btn:focus {
-    border-color: #ea8b1e;
+    box-shadow: none;
 }
 
 #next-btn:active {
@@ -136,4 +148,17 @@
 
 .btn-outline-primary {
     margin: 4px;
+}
+
+select {
+    border-radius: .25rem;
+    margin-bottom: 22px;
+    margin-left: 20px;
+    width: 60px;
+    z-index: 0;
+
+}
+
+#draggable-answers {
+    width: 110%;
 }
